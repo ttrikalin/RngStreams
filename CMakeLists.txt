@@ -112,7 +112,7 @@ install(TARGETS ${PROJECT_NAME}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/$<CONFIG>
 )
 
-install(FILES src/share/RngStream.h
+install(FILES src/RngStream.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
