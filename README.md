@@ -69,20 +69,10 @@ cmake -DRngStreams_ROOT=/rngstreams/install/path ...
 
 ## Tests
 
-If you want to run RngStreams tests, first, get [doctest](https://github.com/onqtam/doctest) submodule
-``` sh
-git submodule update --init --recursive
-```
-
-Then re-generate the project with the ``RngStreams_BUILD_TESTS`` variable set to ``ON``:
-
-``` sh
-cd build
-cmake .. -DRngStreams_BUILD_TESTS=ON
-make
-```
+You need GoogleTest installed in your system. Get it from https://github.com/google/googletest. 
 
 Finally, run the test
 ``` sh
+cd build 
 make test
 ```
