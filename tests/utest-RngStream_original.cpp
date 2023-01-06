@@ -2,6 +2,8 @@
 
 #include "RngStream.h"
 
+using namespace RngStreams;
+
 namespace {
 
 template <typename T>
