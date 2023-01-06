@@ -35,6 +35,7 @@ Substreams'',
 #include "RngStream.h"
 
 using namespace std;
+using namespace RngStreams;
 
 namespace {
 const double m1 = 4294967087.0;
@@ -480,16 +481,16 @@ int RngStream::RandInt(int low, int high) {
 };
 
 
-bool operator==(const RngContents &lhs, const RngContents &rhs) {
+bool RngStreams::operator==(const RngContents &lhs, const RngContents &rhs) {
   return (lhs.name == rhs.name) && (lhs.antithetic == rhs.antithetic) &&
          (lhs.increased_precision == rhs.increased_precision) &&
          (lhs.Ig == rhs.Ig) && (lhs.Bg == rhs.Bg) && (lhs.Cg == rhs.Cg);
 }
-bool operator!=(const RngContents &lhs, const RngContents &rhs) {
+bool RngStreams::operator!=(const RngContents &lhs, const RngContents &rhs) {
   return !(lhs == rhs);
 }
 
-bool is_synchronized_clone(const RngStream& S1, const RngStream& S2) {
+bool RngStreams::is_synchronized_clone(const RngStream& S1, const RngStream& S2) {
   const RngContents rc1{S1.GetRngContents()};
   const RngContents rc2{S2.GetRngContents()};
   return (&S1 != &S2) && (rc1 == rc2);

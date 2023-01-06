@@ -1,34 +1,36 @@
 #ifndef RNGSTREAM_H
 #define RNGSTREAM_H
 
+#include <cstdlib>
+#include <iostream>
 #include <string>
 #include <vector>
-#include <iostream>
-#include <cstdlib>
 
+namespace RngStreams {
+  
 struct RngContents {
-  std::string name; 
-  bool antithetic; 
-  bool increased_precision; 
-  std::vector<double> Ig; 
-  std::vector<double> Bg; 
-  std::vector<double> Cg; 
+  std::string name;
+  bool antithetic;
+  bool increased_precision;
+  std::vector<double> Ig;
+  std::vector<double> Bg;
+  std::vector<double> Cg;
 };
 
-bool operator==(const RngContents & lhs, const RngContents & rhs);
-bool operator!=(const RngContents & lhs, const RngContents & rhs);
+bool operator==(const RngContents& lhs, const RngContents& rhs);
+bool operator!=(const RngContents& lhs, const RngContents& rhs);
 
 class RngStream {
  public:
   /// @brief Constructor of a de novo stream
-  /// @param name C character array 
-  RngStream(const char *name = "");
+  /// @param name C character array
+  RngStream(const char* name = "");
 
-  /// @brief Constructor 
-  /// @param RngContents struct. 
-  RngStream(const RngContents & rng_contents);
+  /// @brief Constructor
+  /// @param RngContents struct.
+  RngStream(const RngContents& rng_contents);
 
-  /// @brief Get RngContents struct. 
+  /// @brief Get RngContents struct.
   RngContents GetRngContents() const;
 
   static bool SetPackageSeed(const unsigned long seed[6]);
@@ -38,8 +40,8 @@ class RngStream {
   void ResetStartSubstream();
 
   void ResetNextSubstream();
-  
-  void ResetToRngContents(const RngContents & rng_contents);
+
+  void ResetToRngContents(const RngContents& rng_contents);
 
   void SetAntithetic(bool a);
 
@@ -73,7 +75,7 @@ class RngStream {
   double U01d();
 };
 
-
 bool is_synchronized_clone(const RngStream& S1, const RngStream& S2);
 
+}  // namespace RngStreams
 #endif

@@ -2,6 +2,8 @@
 
 #include "RngStream.h"
 
+using namespace RngStreams;
+
 namespace {
 
 std::vector<double> sample_uniform(const int n, RngStream& S) {
