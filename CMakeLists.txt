@@ -9,15 +9,15 @@ option(RngStreams_BUILD_SHARED_LIBS "Compile RngStreams as a shared library" ON)
 if(RngStreams_BUILD_SHARED_LIBS)
   add_library(${PROJECT_NAME}
     SHARED
-      src/share/RngStream.cpp
-      src/share/RngStream.h
+      src/RngStream.cpp
+      src/RngStream.h
   )
   message(STATUS "Configuring ${PROJECT_NAME} shared library")
 else()
   add_library(${PROJECT_NAME}
     STATIC
-      src/share/RngStream.cpp
-      src/share/RngStream.h
+      src/RngStream.cpp
+      src/RngStream.h
   )
   message(STATUS "Configuring ${PROJECT_NAME} static library")
 endif()
@@ -90,17 +90,11 @@ endif()
 ###################################################
 find_package(GTest REQUIRED)
 
-include_directories(src/share) # this is so we can #include "classX.hpp"
-
-# this builds the executable with the main entry in main()
-add_executable(${PROJECT_NAME}_exec 
-  src/main.cpp 
-  src/share/RngStream.cpp      # EDIT THIS 
-)
+include_directories(src) # this is so we can #include "RngStream.h"
 
 enable_testing()
 add_executable(${PROJECT_NAME}_test 
-  src/share/RngStream.cpp 
+  src/RngStream.cpp 
   tests/utest-RngStream_original.cpp 
   tests/utest-RngStream_augmentations.cpp  # EDIT THIS
 )
